@@ -1,5 +1,4 @@
 package ca.ciccc.java.asami.model;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -33,7 +32,7 @@ public class MainFrame extends JFrame {
 
 		// label
 		JLabel label = new JLabel("New label");
-		label.setText("Type a date (yyyy-mm-dd) or “quit” to exit");
+		label.setText("Type a date (yyyy-mm-dd)");
 
 		contentPane.add(label, "cell 2 0");
 

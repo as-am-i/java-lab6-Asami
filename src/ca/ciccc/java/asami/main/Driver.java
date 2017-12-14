@@ -1,4 +1,5 @@
 package ca.ciccc.java.asami.main;
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,8 +16,6 @@ public class Driver {
 		new Driver().createUI();
 
 	}
-
-	
 
 	private void createUI() {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,24 +37,21 @@ public class Driver {
 						public void actionPerformed(ActionEvent e) {
 							String input = frame.getInputValue();
 
-							// System.out.println(input);
-
 							if (!input.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}")) {
-								frame.setResult("It is NOT a valid date - boo!");
+								frame.setResult("It is NOT a valid date - type properly");
 								return;
 							}
 
 							String[] parts = input.split("-");
-							// System.out.println(parts);
+
 							int year = Integer.parseInt(parts[0]);
 							int month = Integer.parseInt(parts[1]);
 							int day = Integer.parseInt(parts[2]);
 							// System.out.println(day);
 							// System.out.println(parts[2]);
-							
+
 							Date date1 = new Date(day, month, year);
 
-							// System.out.println(date1);
 							frame.setResult(date1.getDayOfTheWeek());
 						}
 					});

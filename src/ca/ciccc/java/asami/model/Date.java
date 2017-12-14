@@ -1,46 +1,100 @@
 package ca.ciccc.java.asami.model;
 
+/**
+ * Lab6 Date class
+ * 
+ * @author tanii_asami
+ *
+ */
 public class Date {
 	private int day;
 	private int month;
 	private int year;
 
+	/**
+	 * Date constructor
+	 * 
+	 * @param day
+	 *            to be set
+	 * @param month
+	 *            to be set
+	 * @param year
+	 *            to be set
+	 */
 	public Date(int day, int month, int year) {
 		setYear(year);
 		setMonth(month);
 		setDay(day);
 	}
 
+	/**
+	 * setter for day
+	 * 
+	 * @param day
+	 *            to be set
+	 */
 	public void setDay(int day) {
 		if (isValidDate(day) == true) {
 			this.day = day;
 		}
 	}
 
+	/**
+	 * getter for day
+	 * 
+	 * @return day
+	 */
 	public int getDay() {
 		return day;
 	}
 
+	/**
+	 * setter for month
+	 * 
+	 * @param month
+	 *            to be set
+	 */
 	public void setMonth(int month) {
 		if ((month > 0) && (month < 13)) {
 			this.month = month;
 		}
 	}
 
+	/**
+	 * getter for month
+	 * 
+	 * @return month
+	 */
 	public int getMonth() {
 		return month;
 	}
 
+	/**
+	 * getter for year
+	 * 
+	 * @param year
+	 *            to be set
+	 */
 	public void setYear(int year) {
 		if (year > 0) {
 			this.year = year;
 		}
 	}
 
+	/**
+	 * getter for year
+	 * 
+	 * @return year
+	 */
 	public int getYear() {
 		return year;
 	}
 
+	/**
+	 * calculate month code to be added
+	 * 
+	 * @return monthCode
+	 */
 	public int calculateMonthCode() {
 		int monthCode = 0;
 		switch (month) {
@@ -93,6 +147,13 @@ public class Date {
 		return monthCode;
 	}
 
+	/**
+	 * check if the date is in special years from 1600s to 2100s
+	 * 
+	 * @param monthCode
+	 *            before check
+	 * @return monthCode after check
+	 */
 	public int checkSpecialYears(int monthCode) {
 		int firstTwoDigits = year / 100;
 		switch (firstTwoDigits) {
@@ -117,6 +178,13 @@ public class Date {
 		return monthCode;
 	}
 
+	/**
+	 * get the day of the week
+	 * 
+	 * @param mod
+	 *            to be taken
+	 * @return dayOfTheWeek
+	 */
 	public String checkDayOfTheWeek(int mod) {
 		String dayOfTheWeek;
 		switch (mod) {
@@ -147,16 +215,30 @@ public class Date {
 		return dayOfTheWeek;
 	}
 
+	/**
+	 * private method to check if it's leap year or not
+	 * 
+	 * @return isLeapYear
+	 */
 	private boolean isLeapYear() {
+		boolean isLeapYear = false;
 		if (year % 400 == 0) {
-			return true;
+			isLeapYear = true;
 		} else if ((year % 4 == 0) && !((year % 100 == 0) && (year % 400 != 0))) {
-			return true;
+			isLeapYear = true;
 		} else {
-			return false;
+			isLeapYear = false;
 		}
+		return isLeapYear;
 	}
 
+	/**
+	 * check if it's valid date
+	 * 
+	 * @param day
+	 *            to be checked
+	 * @return valid
+	 */
 	public boolean isValidDate(int day) {
 		boolean valid = false;
 		switch (month) {
@@ -186,7 +268,15 @@ public class Date {
 		return valid;
 	}
 
+	/**
+	 * format the day of the week
+	 * 
+	 * @param dayOfTheWeek
+	 *            to be printed
+	 * @return dayOfTheWeekString
+	 */
 	public String printDayOfTheWeek(String dayOfTheWeek) {
+		// month
 		String monthString = null;
 		switch (month) {
 		case 1:
@@ -227,6 +317,7 @@ public class Date {
 			break;
 		}
 
+		// day
 		String dayString = null;
 		if (day < 10) {
 			dayString = "0" + Integer.toString(day);
@@ -240,8 +331,13 @@ public class Date {
 		return dayOfTheWeekString;
 	}
 
+	/**
+	 * calculate and return the name of the day of the week
+	 * 
+	 * @return
+	 */
 	public String getDayOfTheWeek() {
-		// System.out.println("" + year + month + day);
+		String dayOfTheWeekString = null;
 		if ((month != 0) && (day != 0)) {
 			// step1
 			int lastTwoDigits = year % 100;
@@ -267,14 +363,11 @@ public class Date {
 			String dayOfTheWeek = checkDayOfTheWeek(mod);
 
 			// format
-			String dayOfTheWeekString = printDayOfTheWeek(dayOfTheWeek);
-			return dayOfTheWeekString;
-
+			dayOfTheWeekString = printDayOfTheWeek(dayOfTheWeek);
 		} else {
-			String invalidMessage = "It is NOT a valid date!";
-			return invalidMessage;
+			dayOfTheWeekString = "It is NOT a valid date!";
 		}
-
+		return dayOfTheWeekString;
 	}
 
 	@Override
@@ -282,14 +375,14 @@ public class Date {
 		return "Date [day=" + day + ", month=" + month + ", year=" + year + "]";
 	}
 
-	public static void main(String[] args) {
-		Date date1 = new Date(29, 2, 2017);
-		System.out.println(date1.getDayOfTheWeek());
-
-		Date date2 = new Date(29, 2, 2016);
-		System.out.println(date2.getDayOfTheWeek());
-
-		Date date3 = new Date(7, 9, 1999);
-		System.out.println(date3.getDayOfTheWeek());
-	}
+//	public static void main(String[] args) {
+//		Date date1 = new Date(29, 2, 2017);
+//		System.out.println(date1.getDayOfTheWeek());
+//
+//		Date date2 = new Date(29, 2, 2016);
+//		System.out.println(date2.getDayOfTheWeek());
+//
+//		Date date3 = new Date(7, 9, 1999);
+//		System.out.println(date3.getDayOfTheWeek());
+//	}
 }
