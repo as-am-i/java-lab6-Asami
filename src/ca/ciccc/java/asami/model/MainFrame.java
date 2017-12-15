@@ -1,4 +1,5 @@
 package ca.ciccc.java.asami.model;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +11,12 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
+/**
+ * Lab6 MainFrame class
+ * 
+ * @author tanii_asami
+ *
+ */
 public class MainFrame extends JFrame {
 
 	private JPanel contentPane;
@@ -23,7 +30,9 @@ public class MainFrame extends JFrame {
 	 */
 	public MainFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setSize(450, 300);
+		setLocationRelativeTo(null); // Middle of the screen
+		setTitle("Lab 6 - Asami");
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -43,10 +52,11 @@ public class MainFrame extends JFrame {
 
 		okButton = new JButton("OK");
 		contentPane.add(okButton, "cell 2 2");
+		// shortcut for OK button
+		getRootPane().setDefaultButton(okButton);
 
 		result = new JLabel("");
 		contentPane.add(result, "cell 2 3");
-
 	}
 
 	public String getInputValue() {

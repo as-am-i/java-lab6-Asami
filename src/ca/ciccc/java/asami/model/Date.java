@@ -11,6 +11,19 @@ public class Date {
 	private int month;
 	private int year;
 
+	public static final int JANUARY = 1;
+	public static final int FEBRUARY = 2;
+	public static final int MARCH = 3;
+	public static final int APRIL = 4;
+	public static final int MAY = 5;
+	public static final int JUNE = 6;
+	public static final int JULY = 7;
+	public static final int AUGUST = 8;
+	public static final int SEPTEMBER = 9;
+	public static final int OCTOBER = 10;
+	public static final int NOVEMBER = 11;
+	public static final int DECEMBER = 12;
+
 	/**
 	 * Date constructor
 	 * 
@@ -98,46 +111,46 @@ public class Date {
 	public int calculateMonthCode() {
 		int monthCode = 0;
 		switch (month) {
-		case 1:
+		case JANUARY:
 			monthCode += 1;
 			if (isLeapYear() == true) {
 				monthCode -= 1;
 			}
 			break;
-		case 2:
+		case FEBRUARY:
 			monthCode += 4;
 			if (isLeapYear() == true) {
 				monthCode -= 1;
 			}
 			break;
-		case 3:
+		case MARCH:
 			monthCode += 4;
 			break;
-		case 4:
+		case APRIL:
 			monthCode += 0;
 			break;
-		case 5:
+		case MAY:
 			monthCode += 2;
 			break;
-		case 6:
+		case JUNE:
 			monthCode += 5;
 			break;
-		case 7:
+		case JULY:
 			monthCode += 0;
 			break;
-		case 8:
+		case AUGUST:
 			monthCode += 3;
 			break;
-		case 9:
+		case SEPTEMBER:
 			monthCode += 6;
 			break;
-		case 10:
+		case OCTOBER:
 			monthCode += 1;
 			break;
-		case 11:
+		case NOVEMBER:
 			monthCode += 4;
 			break;
-		case 12:
+		case DECEMBER:
 			monthCode += 6;
 			break;
 		default:
@@ -242,26 +255,26 @@ public class Date {
 	public boolean isValidDate(int day) {
 		boolean valid = false;
 		switch (month) {
-		case 2:
+		case FEBRUARY:
 			if (isLeapYear()) {
 				valid = ((day <= 29) && (day > 0)) ? true : false;
 			} else {
 				valid = ((day <= 28) && (day > 0)) ? true : false;
 			}
 			break;
-		case 4:
-		case 6:
-		case 9:
-		case 11:
+		case APRIL:
+		case JUNE:
+		case SEPTEMBER:
+		case NOVEMBER:
 			valid = (!(day > 30)) ? true : false;
 			break;
-		case 1:
-		case 3:
-		case 5:
-		case 7:
-		case 8:
-		case 10:
-		case 12:
+		case JANUARY:
+		case MARCH:
+		case MAY:
+		case JULY:
+		case AUGUST:
+		case OCTOBER:
+		case DECEMBER:
 			valid = (!(day > 31)) ? true : false;
 			break;
 		}
@@ -279,40 +292,40 @@ public class Date {
 		// month
 		String monthString = null;
 		switch (month) {
-		case 1:
+		case JANUARY:
 			monthString = "January";
 			break;
-		case 2:
+		case FEBRUARY:
 			monthString = "February";
 			break;
-		case 3:
+		case MARCH:
 			monthString = "March";
 			break;
-		case 4:
+		case APRIL:
 			monthString = "April";
 			break;
-		case 5:
+		case MAY:
 			monthString = "May";
 			break;
-		case 6:
+		case JUNE:
 			monthString = "June";
 			break;
-		case 7:
+		case JULY:
 			monthString = "July";
 			break;
-		case 8:
+		case AUGUST:
 			monthString = "August";
 			break;
-		case 9:
+		case SEPTEMBER:
 			monthString = "September";
 			break;
-		case 10:
+		case OCTOBER:
 			monthString = "October";
 			break;
-		case 11:
+		case NOVEMBER:
 			monthString = "November";
 			break;
-		case 12:
+		case DECEMBER:
 			monthString = "December";
 			break;
 		}
@@ -334,7 +347,7 @@ public class Date {
 	/**
 	 * calculate and return the name of the day of the week
 	 * 
-	 * @return
+	 * @return dayOfTheWeekString
 	 */
 	public String getDayOfTheWeek() {
 		String dayOfTheWeekString = null;
@@ -374,15 +387,4 @@ public class Date {
 	public String toString() {
 		return "Date [day=" + day + ", month=" + month + ", year=" + year + "]";
 	}
-
-//	public static void main(String[] args) {
-//		Date date1 = new Date(29, 2, 2017);
-//		System.out.println(date1.getDayOfTheWeek());
-//
-//		Date date2 = new Date(29, 2, 2016);
-//		System.out.println(date2.getDayOfTheWeek());
-//
-//		Date date3 = new Date(7, 9, 1999);
-//		System.out.println(date3.getDayOfTheWeek());
-//	}
 }

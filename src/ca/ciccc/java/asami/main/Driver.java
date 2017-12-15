@@ -10,7 +10,12 @@ import javax.swing.UIManager.LookAndFeelInfo;
 import ca.ciccc.java.asami.model.Date;
 import ca.ciccc.java.asami.model.MainFrame;
 
-// to initialize JFrame
+/**
+ * Lab6 Driver class
+ * 
+ * @author tanii_asami
+ *
+ */
 public class Driver {
 	public static void main(String[] args) {
 		new Driver().createUI();
